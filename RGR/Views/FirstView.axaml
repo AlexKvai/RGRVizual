@@ -33,10 +33,10 @@
 		</ScrollViewer>
 
 		<DockPanel Grid.Row="2" HorizontalAlignment="Center">
-			<Button Content="Редактор запросов" Command="{Binding $parent[Window].DataContext.Change}" HorizontalContentAlignment="Center" MinWidth="300" MaxWidth="400"/>
-			<Button Content="Удалить вкладку" IsEnabled="{Binding MainContext.Tab.ButtonVisible}" MinWidth="300" MaxWidth="400" HorizontalContentAlignment="Center"/>
-			<Button Content="Новая строка" MinWidth="300" MaxWidth="400" HorizontalContentAlignment="Center"/>
-			<Button Content="Удалить строку" MinWidth="300" MaxWidth="400" HorizontalContentAlignment="Center"/>
+			<Button Content="Query Editor" Command="{Binding $parent[Window].DataContext.Change}" HorizontalContentAlignment="Center" MinWidth="300" MaxWidth="400"/>
+			<Button Content="Delete string" IsEnabled="{Binding MainContext.Tab.ButtonVisible}" MinWidth="300" MaxWidth="400" HorizontalContentAlignment="Center"/>
+			<Button Content="New String " MinWidth="300" MaxWidth="400" HorizontalContentAlignment="Center"/>
+			<Button Content="Save Changes" MinWidth="300" MaxWidth="400" HorizontalContentAlignment="Center"/>
 		</DockPanel>
 		
 	</Grid>

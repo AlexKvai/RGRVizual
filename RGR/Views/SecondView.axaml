@@ -6,7 +6,7 @@
              x:Class="RGR.Views.SecondView">
 
 
-	<Grid ColumnDefinitions="*,*,*" RowDefinitions="10*,15*,20*,55*" ShowGridLines="False">
+	<Grid ColumnDefinitions="*,2*,*" RowDefinitions="8,12*, 10*,15*,20*" ShowGridLines="False">
 		<ScrollViewer Grid.Row="2" Grid.Column="1" >
 			<ItemsControl Items="{Binding MainContext.Request}">
 				<ItemsControl.ItemTemplate>
@@ -23,6 +23,38 @@
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
 		</ScrollViewer>
+		
+		<Grid Grid.Row="3" Grid.Column="1"  ColumnDefinitions="10*,10*,10*,10*,10*" RowDefinitions="1*,6*">
+				<TextBlock Grid.Row="0" Grid.Column="1" >
+					Entity
+				</TextBlock>
+				<ComboBox Grid.Row="2" SelectedIndex="0" Grid.Column="3" Grid.ColumnSpan="1" >
+					<ComboBoxItem>Players</ComboBoxItem>
+					<ComboBoxItem>Teams Name</ComboBoxItem>
+				</ComboBox>
+				<TextBlock Grid.Row="0" Grid.Column="2" >
+					Command
+				</TextBlock>
+				<ComboBox Grid.Row="2" SelectedIndex="0" Grid.Column="2" Grid.ColumnSpan="1">
+					<ComboBoxItem>Command 1</ComboBoxItem>
+					<ComboBoxItem>Command 2</ComboBoxItem>
+				</ComboBox>
+			<TextBlock Grid.Row="0" Grid.Column="3" >
+					Right part
+				</TextBlock>
+				<ComboBox Grid.Row="2" SelectedIndex="0" Grid.Column="1" Grid.ColumnSpan="1">
+					<ComboBoxItem>First</ComboBoxItem>
+					<ComboBoxItem>Second</ComboBoxItem>
+				</ComboBox>
+			<TextBlock Grid.Row="0" Grid.Column="4" >
+					Operation
+				</TextBlock>
+			<ComboBox Grid.Row="2" SelectedIndex="0" Grid.Column="4" Grid.ColumnSpan="1">
+					<ComboBoxItem>Or</ComboBoxItem>
+					<ComboBoxItem>In</ComboBoxItem>
+				</ComboBox>
+			
+		</Grid>
 
 		<StackPanel Grid.Row="0" Grid.Column="1">
 			<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Content="New Request"/>
@@ -31,7 +63,7 @@
 			<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Content="Exit" Command="{Binding $parent[Window].DataContext.Change}"/>
 		</StackPanel>
 
-		<ScrollViewer Grid.Row="3" Grid.ColumnSpan="2">
+		<ScrollViewer Grid.Row="4" Grid.ColumnSpan="2">
 			<DataGrid Items="{Binding MainContext.Grid}" AutoGenerateColumns="False">
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Имя игрока"  Binding="{Binding Column1}"/>
