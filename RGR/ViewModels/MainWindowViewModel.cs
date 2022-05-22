@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using ReactiveUI;
 using System.Reactive.Linq;
 using RGR.Models;
+using RGR.Models.Database;
 
 namespace RGR.ViewModels
 {
@@ -12,6 +13,7 @@ namespace RGR.ViewModels
     {
         public MainWindowViewModel()
         {
+            CreateContext();
             CreateTabs();
             CreateGrid();
             CreateRequests();
@@ -43,17 +45,8 @@ namespace RGR.ViewModels
             get { return tab; }
             set { this.RaiseAndSetIfChanged(ref tab, value); }
         }
-        private void CreateTabs()
-        {
-            Tab = new ObservableCollection<Tabs>();
-            Tab.Add(new Tabs("Players",false));
-            Tab.Add(new Tabs("Teams", false));
-            Tab.Add(new Tabs("Statistic of matches", false));
-            Tab.Add(new Tabs("Statistic of career all time", false));
-            Tab.Add(new Tabs("City", false));
-            Tab.Add(new Tabs("Request 1", false));
-            Tab.Add(new Tabs("Request 2", false));
-        }
+
+
 
         ObservableCollection<Tabs> request;
         public ObservableCollection<Tabs> Request
@@ -65,8 +58,8 @@ namespace RGR.ViewModels
         private void CreateRequests()
         {
             Request = new ObservableCollection<Tabs>();
-            Request.Add(new Tabs("Request 1", true));
-            Request.Add(new Tabs("Request 2", true));
+            Request.Add(new Tabs("Çàïðîñ 1", true));
+            Request.Add(new Tabs("Çàïðîñ 2", true));
         }
 
         ObservableCollection<Grids> grid;
@@ -78,12 +71,34 @@ namespace RGR.ViewModels
         private void CreateGrid()
         {
             Grid = new ObservableCollection<Grids>();
-            Grid.Add(new Grids("Paul Goldschmidt", "San Diego Padres", "36" , "80", "78", "63"));
-            Grid.Add(new Grids("Randy Johnson", "San Diego Padres", "42", "110", "43", "11"));
-            Grid.Add(new Grids("Tyler Naquin", "San Diego Padres", "35", "120", "44", "28"));
-            Grid.Add(new Grids("Tommy Pham", "Cincinnati Reds", "34", "130", "51", "98"));
-            Grid.Add(new Grids("Luis Cessa", "Cincinnati Reds", "37", "81", "52", "33"));
-            Grid.Add(new Grids("Justin Wilson", "Atlanta Braves", "42", "89", "56", "62"));
+            Grid.Add(new Grids("Alex Ovechkin", "LW", "36", "1274", "780", "630" ));
+            Grid.Add(new Grids("Joe Thornton", "C", "42", "1714", "430", "1109"));
+            Grid.Add(new Grids("Evgeni Malkin", "C", "35", "981", "444", "702"));
+            Grid.Add(new Grids("Sidney Crosby", "C", "34", "1108", "517", "892"));
+            Grid.Add(new Grids("Marc-Andre Fleury", "G", "37", "939", "520", "299"));
+            Grid.Add(new Grids("Patrick Marleau", "C", "42", "1779", "566", "631"));
+        }
+
+        DatabaseContext data;
+
+        public DatabaseContext Data
+        {
+            get { return data; }
+            set { this.RaiseAndSetIfChanged(ref data, value); }
+        }
+        private void CreateContext()
+        {
+            Data = new DatabaseContext();
+        }
+
+        private void CreateTabs()
+        {
+            Tab = new ObservableCollection<Tabs>();
+            Tab.Add(new BaseballPlayerTab("Arena", Data.Players));
+            Tab.Add(new BaseballTeamTab("Coach", Data.Teams));
+            Tab.Add(new CityTab("Game", Data.Cities));
+            Tab.Add(new StatisticOfCareerAllTimeTab("Player", Data.StatisticOfCareerAllTime));
+            Tab.Add(new StatisticOfMatchesTab("PlayerResult", Data.StatisticOfMatches));
         }
     }
 }

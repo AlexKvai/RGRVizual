@@ -15,5 +15,7 @@ namespace RGR.Models
         }
         public string Header { get; set; }
         public bool ButtonVisible { get; set; }
+
+        public List<string>? DataColumns { get; set; }
     }
 }
