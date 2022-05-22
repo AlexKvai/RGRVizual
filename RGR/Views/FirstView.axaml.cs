@@ -5,6 +5,7 @@ using Avalonia.Markup.Xaml;
 using RGR.Models;
 using Microsoft.EntityFrameworkCore;
 using RGR.ViewModels;
+using RGR.Models.Database;
 
 namespace RGR.Views
 {
