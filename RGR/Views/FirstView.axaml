@@ -7,6 +7,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RGR.Views.FirstView">
 	<UserControl.Styles>
+		
 		<Style Selector="ScrollViewer.sv1">
 			<Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
 			<Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
@@ -92,18 +93,19 @@
 		</DockPanel>
 		<ScrollViewer Grid.Row="1" Classes="sv2">
 			<!--
-			<ItemsControl Items="{Binding $parent[Window].DataContext.Data.Horses}">
+			<ItemsControl Items="{Binding $parent[Window].DataContext.Data.BaseballTeams}">
 				<ItemsControl.DataTemplates>
-					<DataTemplate DataType="{x:Type dbm:Horses}">
+					<DataTemplate DataType="{x:Type dbm:BaseballTeams}">
 						<Grid ColumnDefinitions="*,*">
-							<TextBlock Grid.Column="0" Text="{Binding Id}"></TextBlock>
-							<TextBlock Grid.Column="1" Text="{Binding Id}"></TextBlock>
+							<TextBlock Grid.Column="0" Text="{Binding ProperName}"></TextBlock>
+				
 						</Grid>
 					</DataTemplate>
 				</ItemsControl.DataTemplates>
 			</ItemsControl>
 			-->
-			<DataGrid Name="DataTable" Items="{Binding $parent[Window].DataContext.Data.BaseballPlayers}"
+			
+			<DataGrid Name="DataTable" Items="{Binding $parent[Window].DataContext.Data}"
 					  AutoGenerateColumns="True" CanUserSortColumns="True"/>
 		</ScrollViewer>
 		<Border Classes="br1" Grid.Row="2" BorderThickness="0,1,0,0">

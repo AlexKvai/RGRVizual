@@ -14,11 +14,12 @@ namespace RGR.Models
         {
             DBS = dBS;
             DataColumns = new List<string>();
-            DataColumns.Add("NameTeam");
+            DataColumns.Add("PlayerSName");
+            DataColumns.Add("TeamSName");
             DataColumns.Add("War");
-            DataColumns.Add("AB");
+            DataColumns.Add("Ab");
             DataColumns.Add("H");
-            DataColumns.Add("HR");
+            DataColumns.Add("Hr");
         }
 
         new public DbSet<StatisticOfCareerAllTime>? DBS { get; set; }

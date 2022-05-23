@@ -15,7 +15,8 @@ namespace RGR.Models
         {
             DBS = dBS;
             DataColumns = new List<string>();
-            DataColumns.Add("Name");
+            DataColumns.Add("TeamSName");
+            DataColumns.Add("NameOfTheCity");
         }
         new public DbSet<City>? DBS { get; set; }
     }

@@ -38,7 +38,7 @@
 		</Style>
 	</Window.Styles>
 	<Grid RowDefinitions="*,*,*,*,*,*,*,0.8*,0.8*">
-		<TextBox Grid.Row="0" Text="{Binding BaseballTeam.Name}" Watermark="RaceNumber"></TextBox>
+		<TextBox Grid.Row="0" Text="{Binding BaseballTeam.ProperName}" Watermark="RaceNumber"></TextBox>
 		<TextBox Grid.Row="1" Text="{Binding BaseballTeam.Record}" Watermark="HorseName"></TextBox>
 		<Button Classes="b2" Grid.Row="4" Content="Confirm" Name="Confirm"></Button>
 		<Button Classes="b2" Grid.Row="5" Content="Cancel" Name="Cancel"></Button>

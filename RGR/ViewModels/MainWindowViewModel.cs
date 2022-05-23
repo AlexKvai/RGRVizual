@@ -67,11 +67,11 @@ namespace RGR.ViewModels
         private void CreateTabs()
         {
             Tabs = new ObservableCollection<MyTab>();
-            Tabs.Add(new BaseballPlayerTab("Horse", Data.BaseballPlayers));
-            Tabs.Add(new BaseballTeamTab("Horse Relatives", Data.BaseballTeams));
-            Tabs.Add(new CityTab("Jokey", Data.Cities));
-            Tabs.Add(new StatisticOfCareerAllTimeTab("Race", Data.StatisticOfCareerAllTimes));
-            Tabs.Add(new StatisticOfMatchesTab("Result", Data.StatisticOfMatches));
+            Tabs.Add(new BaseballPlayerTab("BaseballPlayers", Data.BaseballPlayers));
+            Tabs.Add(new BaseballTeamTab("BaseballTeams", Data.BaseballTeams));
+            Tabs.Add(new CityTab("Cities", Data.Cities));
+            Tabs.Add(new StatisticOfCareerAllTimeTab("StatisticOfCareerAllTimes", Data.StatisticOfCareerAllTimes));
+            Tabs.Add(new StatisticOfMatchesTab("StatisticOfMatches", Data.StatisticOfMatches));
         }
         private void CreateQueries()
         {

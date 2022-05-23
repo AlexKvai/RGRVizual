@@ -14,6 +14,7 @@ namespace RGR.Models
         {
             DBS = dBS;
             DataColumns = new List<string>();
+            DataColumns.Add("TeamSName");
             DataColumns.Add("Date");
             DataColumns.Add("Venue");
             DataColumns.Add("Points");

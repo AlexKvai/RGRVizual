@@ -4,80 +4,72 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RGR.Views.SecondView">
-
-
-	<Grid ColumnDefinitions="*,2*,*" RowDefinitions="8,12*, 10*,15*,20*" ShowGridLines="False">
-		<ScrollViewer Grid.Row="2" Grid.Column="1" >
-			<ItemsControl Items="{Binding MainContext.Request}">
-				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<Border BorderBrush="Black" BorderThickness="1">
-							<Grid ColumnDefinitions="4*,*,*">
-								<TextBlock Grid.Column="0" Text="{Binding Header}"
-								 VerticalAlignment="Center"/>
-								<Button HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="1" Content="Show"/>
-								<Button HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="2" Content="Delete"/>
-							</Grid>
-						</Border>
-					</DataTemplate>
-				</ItemsControl.ItemTemplate>
-			</ItemsControl>
-		</ScrollViewer>
-		
-		<Grid Grid.Row="3" Grid.Column="1"  ColumnDefinitions="10*,10*,10*,10*,10*" RowDefinitions="1*,6*">
-				<TextBlock Grid.Row="0" Grid.Column="1" >
-					Entity
-				</TextBlock>
-				<ComboBox Grid.Row="2" SelectedIndex="0" Grid.Column="3" Grid.ColumnSpan="1" >
-					<ComboBoxItem>Players</ComboBoxItem>
-					<ComboBoxItem>Teams Name</ComboBoxItem>
-				</ComboBox>
-				<TextBlock Grid.Row="0" Grid.Column="2" >
-					Command
-				</TextBlock>
-				<ComboBox Grid.Row="2" SelectedIndex="0" Grid.Column="2" Grid.ColumnSpan="1">
-					<ComboBoxItem>Command 1</ComboBoxItem>
-					<ComboBoxItem>Command 2</ComboBoxItem>
-				</ComboBox>
-			<TextBlock Grid.Row="0" Grid.Column="3" >
-					Right part
-				</TextBlock>
-				<ComboBox Grid.Row="2" SelectedIndex="0" Grid.Column="1" Grid.ColumnSpan="1">
-					<ComboBoxItem>First</ComboBoxItem>
-					<ComboBoxItem>Second</ComboBoxItem>
-				</ComboBox>
-			<TextBlock Grid.Row="0" Grid.Column="4" >
-					Operation
-				</TextBlock>
-			<ComboBox Grid.Row="2" SelectedIndex="0" Grid.Column="4" Grid.ColumnSpan="1">
-					<ComboBoxItem>Or</ComboBoxItem>
-					<ComboBoxItem>In</ComboBoxItem>
-				</ComboBox>
-			
+	<UserControl.Styles>
+		<Style Selector="ScrollViewer.sv1">
+			<Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+			<Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+			<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+		</Style>
+		<Style Selector="Button.b1">
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="Background" Value="LightGray"/>
+			<Setter Property="BorderThickness" Value="1,0,0,0"/>
+			<Setter Property="BorderBrush" Value="Gray"/>
+			<Setter Property="CornerRadius" Value="0"/>
+		</Style>
+		<Style Selector="Button.b2">
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="Background" Value="LightGray"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="Gray"/>
+		</Style>
+		<Style Selector="Border.br1">
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="Gray"/>
+		</Style>
+	</UserControl.Styles>
+	<Grid ColumnDefinitions="*,2*">
+		<Grid Grid.Column="0" RowDefinitions="12*,*,*">
+			<ScrollViewer Grid.Row="0" Classes="sv1">
+				<ItemsControl Items="{Binding MainContext.Queries}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Border Classes="br1">
+								<Grid ColumnDefinitions="4*,*,*">
+									<TextBlock Grid.Column="0" Text="{Binding Name}"
+									 VerticalAlignment="Center"/>
+									<Button Grid.Column="1" Content="Show" Classes="b1"/>
+									<Button Grid.Column="2" Content="Delete" Classes="b1"/>
+								</Grid>
+							</Border>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</ScrollViewer>
+			<Button Grid.Row="1"
+			 Content="Create new"
+			 Classes="b2"/>
+			<Button Grid.Row="2"
+			 Content="Change view"
+			 Command="{Binding $parent[Window].DataContext.Change}"
+			 Classes="b2"/>
 		</Grid>
-
-		<StackPanel Grid.Row="0" Grid.Column="1">
-			<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Content="New Request"/>
-			<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Content="Connect"/>
-			<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Content="Choose"/>
-			<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Content="Exit" Command="{Binding $parent[Window].DataContext.Change}"/>
-		</StackPanel>
-
-		<ScrollViewer Grid.Row="4" Grid.ColumnSpan="2">
-			<DataGrid Items="{Binding MainContext.Grid}" AutoGenerateColumns="False">
-				<DataGrid.Columns>
-					<DataGridTextColumn Header="Имя игрока"  Binding="{Binding Column1}"/>
-					<DataGridTextColumn Header="Название команды"  Binding="{Binding Column2}"/>
-					<DataGridTextColumn Header="WAR"  Binding="{Binding Column3}"/>
-					<DataGridTextColumn Header="AB"  Binding="{Binding Column4}"/>
-					<DataGridTextColumn Header="H"  Binding="{Binding Column5}"/>
-					<DataGridTextColumn Header="HR"  Binding="{Binding Column6}"/>
-				</DataGrid.Columns>
-			</DataGrid>
-
-		</ScrollViewer>
-		
+		<Grid Grid.Column="1" RowDefinitions="10*,*,*,*,*">
+			<Border Classes="br1">
+				<TextBox Grid.Row="0" Watermark="Your query here" Focusable="False"/>
+			</Border>
+			<Button Grid.Row="1" Classes="b2" Name="SELECT" Content="SELECT"/>
+			<Button Grid.Row="2" Classes="b2" Name="JOIN" Content="JOIN"/>
+			<Button Grid.Row="3" Classes="b2" Name="GROUP" Content="GROUP"/>
+			<Button Grid.Row="4" Classes="b2" Name="Clear" Content="Clear"/>
+		</Grid>
 	</Grid>
-	
-	
 </UserControl>

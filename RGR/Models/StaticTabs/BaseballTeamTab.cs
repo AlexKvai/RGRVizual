@@ -14,10 +14,11 @@ namespace RGR.Models
         {
             DBS = dBS;
             DataColumns = new List<string>();
-            DataColumns.Add("Name");
+            DataColumns.Add("ProperName");
             DataColumns.Add("Record");
             DataColumns.Add("PlayoffAppearances");
             DataColumns.Add("Seasons");
+            DataColumns.Add("City");
         }
         new public DbSet<BaseballTeam>? DBS { get; set; }
     }

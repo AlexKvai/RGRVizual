@@ -62,8 +62,6 @@ namespace RGR.Views
                     else if (selectedTab is StatisticOfCareerAllTimeTab)
                     {
                         var selectedItems = (selectedTab as StatisticOfCareerAllTimeTab).DBS;
-                        /*if (selectedItems != null)
-                            this.Find<DataGrid>("DataTable").Items = selectedItems;*/
                     } 
                     else if (selectedTab is StatisticOfMatchesTab)
                     {

@@ -15,9 +15,10 @@ namespace RGR.Models
         {
             DBS = dBS;
             DataColumns = new List<string>();
-            DataColumns.Add("Name");
-            DataColumns.Add("Age");
+            DataColumns.Add("ProperName");
+            DataColumns.Add("TeamSName");
             DataColumns.Add("Born");
+            DataColumns.Add("Age");
             DataColumns.Add("Bats");
         }
         new public DbSet<BaseballPlayer>? DBS { get; set; }
