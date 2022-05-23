@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using RGR.Models.Database;
 
 
 namespace RGR.Models
 {
-    public class CityTab : Tabs
+    public class CityTab : StaticTab
     {
         public CityTab(string h = "", DbSet<City>? dBS = null) : base(h)
         {

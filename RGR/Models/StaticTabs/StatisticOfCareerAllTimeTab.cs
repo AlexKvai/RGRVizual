@@ -8,7 +8,7 @@ using RGR.Models.Database;
 
 namespace RGR.Models
 {
-    public class StatisticOfCareerAllTimeTab : Tabs
+    public class StatisticOfCareerAllTimeTab : StaticTab
     {
         public StatisticOfCareerAllTimeTab(string h = "", DbSet<StatisticOfCareerAllTime>? dBS = null) : base(h)
         {

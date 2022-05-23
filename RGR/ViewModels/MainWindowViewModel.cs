@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using ReactiveUI;
+using System.Linq;
 using System.Reactive.Linq;
 using RGR.Models;
 using RGR.Models.Database;
@@ -15,69 +16,41 @@ namespace RGR.ViewModels
         {
             CreateContext();
             CreateTabs();
-            CreateGrid();
-            CreateRequests();
+            CreateQueries();
             Content = Fv = new FirstViewModel(this);
             Sv = new SecondViewModel(this);
         }
-
-        public FirstViewModel Fv { get; }
-        public SecondViewModel Sv { get; }
-
-        public void Change()
-        {
-            if (Content == Fv)
-                Content = Sv;
-            else if (Content == Sv)
-                Content = Fv;
-        }
-
         ViewModelBase content;
         public ViewModelBase Content
         {
             get { return content; }
             set { this.RaiseAndSetIfChanged(ref content, value); }
         }
-
-        ObservableCollection<Tabs> tab;
-        public ObservableCollection<Tabs> Tab
+        public void Change()
         {
-            get { return tab; }
-            set { this.RaiseAndSetIfChanged(ref tab, value); }
+            if (Content == Fv)
+                Content = Sv;
+            else if (Content == Sv)
+                Content = Fv;
+            else throw new InvalidOperationException();
         }
 
-
-
-        ObservableCollection<Tabs> request;
-        public ObservableCollection<Tabs> Request
+        ObservableCollection<MyTab> tabs;
+        public ObservableCollection<MyTab> Tabs
         {
-            get { return request; }
-            set { this.RaiseAndSetIfChanged(ref request, value); }
+            get { return tabs; }
+            set { this.RaiseAndSetIfChanged(ref tabs, value); }
         }
 
-        private void CreateRequests()
+        ObservableCollection<Query> queries;
+        public ObservableCollection<Query> Queries
         {
-            Request = new ObservableCollection<Tabs>();
-            Request.Add(new Tabs("Request 1", true));
-            Request.Add(new Tabs("Request 2", true));
+            get { return queries; }
+            set { this.RaiseAndSetIfChanged(ref queries, value); }
         }
 
-        ObservableCollection<Grids> grid;
-        public ObservableCollection<Grids> Grid
-        {
-            get { return grid; }
-            set { this.RaiseAndSetIfChanged(ref grid, value); }
-        }
-        private void CreateGrid()
-        {
-            Grid = new ObservableCollection<Grids>();
-            Grid.Add(new Grids("Randy Johnson", "Arizona Diamondbacks", "36", "36", "36", "36"));
-            Grid.Add(new Grids("Randy Johnson", "Arizona Diamondbacks", "36", "36", "36", "36"));
-            Grid.Add(new Grids("Randy Johnson", "Arizona Diamondbacks", "36", "36", "36", "36"));
-            Grid.Add(new Grids("Randy Johnson", "Arizona Diamondbacks", "36", "36", "36", "36"));
-            Grid.Add(new Grids("Randy Johnson", "Arizona Diamondbacks", "36", "36", "36", "36"));
-            Grid.Add(new Grids("Randy Johnson", "Arizona Diamondbacks", "36", "36", "36", "36"));
-        }
+        public FirstViewModel Fv { get; }
+        public SecondViewModel Sv { get; }
 
         DatabaseContext data;
 
@@ -93,12 +66,20 @@ namespace RGR.ViewModels
 
         private void CreateTabs()
         {
-            Tab = new ObservableCollection<Tabs>();
-            Tab.Add(new BaseballPlayerTab("Player", Data.Players));
-            Tab.Add(new BaseballTeamTab("Team", Data.Teams));
-            Tab.Add(new CityTab("City", Data.Cities));
-            Tab.Add(new StatisticOfCareerAllTimeTab("StatisticOfCareer", Data.StatisticOfCareerAllTime));
-            Tab.Add(new StatisticOfMatchesTab("StatisticOfMatches", Data.StatisticOfMatches));
+            Tabs = new ObservableCollection<MyTab>();
+            Tabs.Add(new BaseballPlayerTab("Horse", Data.BaseballPlayers));
+            Tabs.Add(new BaseballTeamTab("Horse Relatives", Data.BaseballTeams));
+            Tabs.Add(new CityTab("Jokey", Data.Cities));
+            Tabs.Add(new StatisticOfCareerAllTimeTab("Race", Data.StatisticOfCareerAllTime));
+            Tabs.Add(new StatisticOfMatchesTab("Result", Data.StatisticOfMatches));
+        }
+        private void CreateQueries()
+        {
+            Queries = new ObservableCollection<Query>();
+            Queries.Add(new Query("1234"));
+            Queries.Add(new Query("12534"));
+            Queries.Add(new Query("123"));
+            Queries.Add(new Query("126734"));
         }
     }
 }

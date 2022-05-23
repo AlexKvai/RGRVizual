@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RGR.Models.Database;
 
+
 namespace RGR.Models
 {
-    public class BaseballPlayerTab : Tabs
+    public class BaseballPlayerTab : StaticTab
     {
         public BaseballPlayerTab(string h = "", DbSet<BaseballPlayer>? dBS = null) : base(h)
         {

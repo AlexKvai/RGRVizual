@@ -17,8 +17,8 @@ namespace RGR.Models.Database
         {
         }
 
-        public virtual DbSet<BaseballPlayer> Players { get; set; } = null!;
-        public virtual DbSet<BaseballTeam> Teams { get; set; } = null!;
+        public virtual DbSet<BaseballPlayer> BaseballPlayers { get; set; } = null!;
+        public virtual DbSet<BaseballTeam> BaseballTeams { get; set; } = null!;
         public virtual DbSet<City> Cities { get; set; } = null!;
         public virtual DbSet<StatisticOfCareerAllTime> StatisticOfCareerAllTime { get; set; } = null!;
         public virtual DbSet<StatisticOfMatches> StatisticOfMatches { get; set; } = null!;

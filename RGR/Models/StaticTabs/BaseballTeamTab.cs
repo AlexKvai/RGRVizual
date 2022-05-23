@@ -8,7 +8,7 @@ using RGR.Models.Database;
 
 namespace RGR.Models
 {
-    public class BaseballTeamTab : Tabs
+    public class BaseballTeamTab : StaticTab
     {
         public BaseballTeamTab(string h = "", DbSet<BaseballTeam>? dBS = null) : base(h)
         {

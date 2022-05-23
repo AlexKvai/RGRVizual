@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RGR.Models
 {
-    public class DynTab : Tabs
+    public class DynamicTab : MyTab
     {
-        public DynTab(string h = "", List<object>? db = null, List<string>? dc = null) : base(h)
+        public DynamicTab(string h = "", List<object>? db = null, List<string>? dc = null) : base(h, dc)
         {
             ButtonVisible = true;
             BindedList = db;

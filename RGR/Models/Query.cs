@@ -15,6 +15,6 @@ namespace RGR.Models
         }
         public string Name { get; set; }
         public string Description { get; set; }
-        public DynTab BindedTab { get; set; }
+        public DynamicTab BindedTab { get; set; }
     }
 }

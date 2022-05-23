@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace RGR.Models
 {
-    public class Tabs
+    public class MyTab
     {
-        public Tabs(string head = "", bool butvis = false)
+        public MyTab(string h = "", List<string>? dataColumns = null)
         {
-            Header = head;
-            ButtonVisible = butvis;
+            Header = h;
+            DataColumns = dataColumns;
         }
         public string Header { get; set; }
         public bool ButtonVisible { get; set; }
-
         public List<string>? DataColumns { get; set; }
     }
 }
