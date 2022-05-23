@@ -52,16 +52,16 @@ namespace RGR.ViewModels
         public FirstViewModel Fv { get; }
         public SecondViewModel Sv { get; }
 
-        DatabaseContext data;
+        DataBaseContext data;
 
-        public DatabaseContext Data
+        public DataBaseContext Data
         {
             get { return data; }
             set { this.RaiseAndSetIfChanged(ref data, value); }
         }
         private void CreateContext()
         {
-            Data = new DatabaseContext();
+            Data = new DataBaseContext();
         }
 
         private void CreateTabs()
@@ -70,7 +70,7 @@ namespace RGR.ViewModels
             Tabs.Add(new BaseballPlayerTab("Horse", Data.BaseballPlayers));
             Tabs.Add(new BaseballTeamTab("Horse Relatives", Data.BaseballTeams));
             Tabs.Add(new CityTab("Jokey", Data.Cities));
-            Tabs.Add(new StatisticOfCareerAllTimeTab("Race", Data.StatisticOfCareerAllTime));
+            Tabs.Add(new StatisticOfCareerAllTimeTab("Race", Data.StatisticOfCareerAllTimes));
             Tabs.Add(new StatisticOfMatchesTab("Result", Data.StatisticOfMatches));
         }
         private void CreateQueries()

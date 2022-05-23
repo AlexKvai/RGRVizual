@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace RGR.Models.Database
 {
     public partial class StatisticOfMatches
     {
+        public byte[] TeamSName { get; set; }
+        public byte[] Date { get; set; }
+        public byte[] Venue { get; set; }
+        public long? Points { get; set; }
+        public byte[] GameDuration { get; set; }
 
-        public string Date { get; set; }
-
-        public string Venue { get; set; }
-
-        public int Points { get; set; }
-
-        public string GameDuration { get; set; }
+        public virtual BaseballTeam TeamSNameNavigation { get; set; }
     }
 }

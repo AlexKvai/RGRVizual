@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace RGR.Models.Database
 {
     public partial class StatisticOfCareerAllTime
     {
-        public string NameTeam { get; set; }
+        public byte[] PlayerSName { get; set; }
+        public byte[] TeamSName { get; set; }
+        public double? War { get; set; }
+        public long? Ab { get; set; }
+        public long? H { get; set; }
+        public long? Hr { get; set; }
 
-        public double War { get; set; }
-
-        public int AB { get; set; }
-
-        public int H { get; set; }
-
-        public int HR { get; set; }
-
+        public virtual BaseballPlayer PlayerSNameNavigation { get; set; }
     }
 }

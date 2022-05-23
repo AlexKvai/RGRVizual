@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace RGR.Models.Database
 {
     public partial class BaseballTeam
     {
-        public string Name { get; set; }
+        public BaseballTeam()
+        {
+            BaseballPlayers = new HashSet<BaseballPlayer>();
+            Cities = new HashSet<City>();
+        }
 
-        public string Record { get; set; }
+        public byte[] ProperName { get; set; }
+        public byte[] Record { get; set; }
+        public byte[] PlayoffAppearances { get; set; }
+        public long Seasons { get; set; }
+        public byte[] City { get; set; }
 
-        public string PlayoffAppearances { get; set; }
-
-        public int Seasons { get; set; }
-
+        public virtual City CityNavigation { get; set; }
+        public virtual ICollection<BaseballPlayer> BaseballPlayers { get; set; }
+        public virtual ICollection<City> Cities { get; set; }
     }
 }

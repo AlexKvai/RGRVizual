@@ -41,7 +41,7 @@ namespace RGR.Views
                 }
                 else
                 {
-                    if (selectedTab is BaseballPlayerTab)
+                     if (selectedTab is BaseballPlayerTab)
                     {
                         var selectedItems = (selectedTab as BaseballPlayerTab).DBS;
                         if (selectedItems != null)
@@ -64,7 +64,7 @@ namespace RGR.Views
                         var selectedItems = (selectedTab as StatisticOfCareerAllTimeTab).DBS;
                         /*if (selectedItems != null)
                             this.Find<DataGrid>("DataTable").Items = selectedItems;*/
-                    }
+                    } 
                     else if (selectedTab is StatisticOfMatchesTab)
                     {
                         var selectedItems = (selectedTab as StatisticOfMatchesTab).DBS;

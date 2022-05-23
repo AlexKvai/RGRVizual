@@ -30,7 +30,7 @@ namespace RGR.Views.StaticTableCreateRowViews
         private void button_Confirm_Click(object? sender, RoutedEventArgs e)
         {
             var dc = (this.DataContext as StatisticOfCareerAllTimeViewModel);
-            dc.MainContext.Data.StatisticOfCareerAllTime.Add(dc.StatisticOfCareerAllTime);
+            dc.MainContext.Data.StatisticOfCareerAllTimes.Add(dc.StatisticOfCareerAllTime);
             dc.MainContext.Data.SaveChanges();
             this.Close();
         }

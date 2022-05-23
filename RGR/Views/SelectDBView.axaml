@@ -3,21 +3,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="RGR.Views.StaticTableCreateRowViews.BaseballPlayerView"
-        Title="BaseballPlayerView">
+        x:Class="RGR.Views.SelectDBView"
+		Icon="/Assets/avalonia-logo.ico"
+        Title="SELECT">
 	<Window.Styles>
-		<Style Selector="ScrollViewer.sv1">
-			<Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-			<Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
-			<Setter Property="VerticalContentAlignment" Value="Stretch"/>
-		</Style>
 		<Style Selector="Button.b1">
 			<Setter Property="VerticalAlignment" Value="Stretch"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
 			<Setter Property="HorizontalAlignment" Value="Stretch"/>
 			<Setter Property="HorizontalContentAlignment" Value="Center"/>
-			<Setter Property="Background" Value="LightGray"/>
-			<Setter Property="BorderThickness" Value="1,0,0,0"/>
+			<Setter Property="Background" Value="White"/>
+			<Setter Property="BorderThickness" Value="0,0,0,1"/>
 			<Setter Property="BorderBrush" Value="Gray"/>
 			<Setter Property="CornerRadius" Value="0"/>
 		</Style>
@@ -29,6 +25,7 @@
 			<Setter Property="Background" Value="LightGray"/>
 			<Setter Property="BorderThickness" Value="1"/>
 			<Setter Property="BorderBrush" Value="Gray"/>
+			<Setter Property="CornerRadius" Value="0"/>
 		</Style>
 		<Style Selector="Border.br1">
 			<Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -37,10 +34,28 @@
 			<Setter Property="BorderBrush" Value="Gray"/>
 		</Style>
 	</Window.Styles>
-	<Grid RowDefinitions="*,*,*,*,*,*,*,0.8*,0.8*">
-		<TextBox Grid.Row="0" Text="{Binding BaseballPlayer.ProperName}" Watermark="RaceNumber"></TextBox>
-		<TextBox Grid.Row="1" Text="{Binding BaseballPlayer.Age}" Watermark="HorseName"></TextBox>
-		<Button Classes="b2" Grid.Row="4" Content="Confirm" Name="Confirm"></Button>
-		<Button Classes="b2" Grid.Row="5" Content="Cancel" Name="Cancel"></Button>
+	<Grid RowDefinitions="2*,2*,10*,2*,*,*">
+		<Border Classes="br1" Grid.Row="0">
+			<TextBox Watermark="SELECT" Focusable="True" CornerRadius="0" HorizontalContentAlignment="Center"/>
+		</Border>
+		<Border Classes="br1" Grid.Row="1">
+			<TextBox Watermark="FROM" Focusable="False" CornerRadius="0" HorizontalContentAlignment="Center"/>
+		</Border>
+		<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+			<StackPanel>
+				<ItemsControl Items="{Binding MainContext.Tabs}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Button Classes="b1" Content="{Binding Header}"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</StackPanel>
+		</ScrollViewer>
+		<Border Classes="br1" Grid.Row="3">
+			<TextBox Watermark="WHERE" Focusable="True" CornerRadius="0" HorizontalContentAlignment="Center"/>
+		</Border>
+		<Button Classes="b2" Grid.Row="4" Content="Cancel" BorderThickness="0,1,0,1"/>
+		<Button Classes="b2" Grid.Row="5" Content="Confirm" BorderThickness="0,1,0,0"/>
 	</Grid>
 </Window>
